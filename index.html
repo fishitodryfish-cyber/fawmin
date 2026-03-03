@@ -1,1 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fishito | Premium Sri Lankan Dried Fish Exporter</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Fishito exports premium 100% sun-dried fish from Sri Lanka. FDA and HACCP certified quality seafood including Anchovy, Shrimp, and Mackerel.">
+    <meta name="keywords" content="Dried Fish, Sri Lanka, Exporter, Anchovy, Shrimp, Sun Dried, Seafood Wholesale">
+    
+    <!-- Modern Styling via Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Icons via Lucide CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        .brand-bg { background-color: #10193F; } /* Navy Blue from Logo */
+        .brand-text { color: #10193F; }
+        .nav-scrolled { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        .product-card:hover { transform: translateY(-5px); transition: all 0.3s ease; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+    <!-- NAVIGATION -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-6">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="brand-bg p-2 rounded-lg">
+                    <i data-lucide="fish" class="text-white w-6 h-6"></i>
+                </div>
+                <span id="logo-text" class="text-2xl font-extrabold tracking-tight text-white transition-colors">FISHITO</span>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#home" class="nav-link text-white hover:text-blue-400 font-semibold">Home</a>
+                <a href="#about" class="nav-link text-white hover:text-blue-400 font-semibold">About</a>
+                <a href="#products" class="nav-link text-white hover:text-blue-400 font-semibold">Products</a>
+                <a href="#contact" class="bg-white brand-text px-6 py-2 rounded-full font-bold hover:bg-blue-50 transition-all shadow-lg">Enquire Now</a>
+            </div>
+
+            <button class="md:hidden text-white" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white absolute top-full left-0 w-full shadow-2xl p-6 flex flex-col gap-4 border-t">
+            <a href="#home" class="text-gray-800 font-bold py-2 border-b" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Home</a>
+            <a href="#about" class="text-gray-800 font-bold py-2 border-b" onclick="document.getElementById('mobile-menu').classList.add('hidden')">About</a>
+            <a href="#products" class="text-gray-800 font-bold py-2 border-b" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Products</a>
+            <a href="#contact" class="brand-text font-extrabold py-2" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Enquire Now</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative min-h-screen flex items-center brand-bg overflow-hidden">
+        <div class="absolute inset-0 opacity-30">
+            <div class="absolute top-20 left-10 w-64 h-64 bg-blue-500 rounded-full blur-[100px]"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-indigo-600 rounded-full blur-[120px]"></div>
+        </div>
+        
+        <div class="relative max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center pt-24 pb-12">
+            <div class="text-white space-y-8 animate-in fade-in slide-in-from-left duration-700">
+                <div class="inline-flex items-center gap-2 bg-blue-500/20 px-4 py-2 rounded-full text-blue-200 border border-blue-500/30">
+                    <i data-lucide="globe" class="w-4 h-4"></i>
+                    <span class="text-xs font-bold uppercase tracking-widest">Global Export Partner</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight">
+                    Sri Lanka's Finest <br />
+                    <span class="text-blue-400">Sun-Dried</span> Treasures
+                </h1>
+                <p class="text-lg text-gray-300 max-w-lg">
+                    100% naturally sun-dried premium fish. Processed under FDA and HACCP standards for the highest quality export grade.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#products" class="bg-white brand-text px-8 py-4 rounded-2xl font-bold hover:scale-105 transition-all flex items-center gap-2 shadow-xl">
+                        View Catalog <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#contact" class="border-2 border-white/20 text-white px-8 py-4 rounded-2xl font-bold hover:bg-white/10 transition-all">
+                        Contact Sales
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hidden md:block relative animate-in zoom-in duration-1000">
+                <div class="relative rounded-3xl overflow-hidden border-[12px] border-white/5 shadow-2xl rotate-3 scale-95 hover:rotate-0 transition-transform duration-500">
+                    <img src="https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?auto=format&fit=crop&q=80&w=1000" alt="Dried Fish Display" class="w-full h-[550px] object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#10193F]/80 via-transparent to-transparent"></div>
+                </div>
+                <div class="absolute -bottom-8 -left-8 bg-blue-600 text-white p-8 rounded-3xl shadow-2xl flex items-center gap-4">
+                    <i data-lucide="award" class="w-12 h-12"></i>
+                    <div>
+                        <div class="text-2xl font-black">100%</div>
+                        <div class="text-xs font-bold uppercase tracking-widest opacity-80">Premium Quality</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section class="py-12 bg-white border-b overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-wrap justify-center md:justify-between items-center gap-12 opacity-30 grayscale grayscale hover:grayscale-0 transition-all">
+                <span class="text-2xl font-black tracking-tighter">FDA APPROVED</span>
+                <span class="text-2xl font-black tracking-tighter">HACCP CERTIFIED</span>
+                <span class="text-2xl font-black tracking-tighter">HALAL FOOD</span>
+                <span class="text-2xl font-black tracking-tighter">100% SUN DRIED</span>
+                <span class="text-2xl font-black tracking-tighter">EXPORT QUALITY</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&q=80&w=600" class="rounded-[3rem] shadow-2xl" alt="Sri Lankan Coast">
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-blue-50 rounded-full -z-10"></div>
+            </div>
+            <div class="space-y-6">
+                <h2 class="text-blue-600 font-extrabold uppercase tracking-widest text-sm">Our Heritage</h2>
+                <h3 class="text-4xl md:text-5xl font-extrabold brand-text leading-tight">Authentic Taste from the Indian Ocean</h3>
+                <p class="text-gray-600 text-lg leading-relaxed">
+                    Based in the coastal paradise of Sri Lanka, Fishito bridges traditional artisanal drying techniques with modern export standards. We ensure that our worldwide partners receive nutrient-rich, preservative-free seafood.
+                </p>
+                <div class="grid grid-cols-2 gap-6 pt-6">
+                    <div class="p-6 rounded-3xl bg-gray-50 border border-gray-100">
+                        <i data-lucide="shield-check" class="text-green-500 mb-4"></i>
+                        <h4 class="font-bold mb-2">Safe Processing</h4>
+                        <p class="text-sm text-gray-500">Hygienically cleaned and packed in certified units.</p>
+                    </div>
+                    <div class="p-6 rounded-3xl bg-gray-50 border border-gray-100">
+                        <i data-lucide="package" class="text-blue-500 mb-4"></i>
+                        <h4 class="font-bold mb-2">Secure Export</h4>
+                        <p class="text-sm text-gray-500">Vacuum-sealed and durable for long-distance shipping.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT CATALOG -->
+    <section id="products" class="py-32 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20 space-y-4">
+                <h2 class="text-4xl md:text-5xl font-extrabold brand-text">Export Catalog</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto">Select a product below to enquire about bulk pricing and target country shipping rates.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" id="product-list">
+                <!-- Products dynamically loaded -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-32 brand-bg text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 relative z-10">
+            <div class="space-y-8">
+                <h2 class="text-5xl font-extrabold leading-tight">Global Export Inquiry</h2>
+                <p class="text-gray-400 text-lg">We ship to USA, UK, Canada, Australia, and the Middle East. Reach out for wholesale documentation and logistics details.</p>
+                
+                <div class="space-y-6">
+                    <div class="flex items-center gap-6 p-6 rounded-3xl bg-white/5 border border-white/10">
+                        <i data-lucide="phone" class="text-blue-400 w-8 h-8"></i>
+                        <div>
+                            <div class="text-sm opacity-50 uppercase font-bold tracking-widest">Call or WhatsApp</div>
+                            <div class="text-2xl font-bold">+94 77 720 4485</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-6 p-6 rounded-3xl bg-white/5 border border-white/10">
+                        <i data-lucide="mail" class="text-blue-400 w-8 h-8"></i>
+                        <div>
+                            <div class="text-sm opacity-50 uppercase font-bold tracking-widest">Sales Email</div>
+                            <div class="text-2xl font-bold">sales@fishito.info</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-10 rounded-[2.5rem] shadow-2xl text-gray-900">
+                <form onsubmit="event.preventDefault(); alert('Thank you for your inquiry. Our export team will contact you shortly!');" class="space-y-5">
+                    <div class="grid grid-cols-2 gap-4">
+                        <input type="text" placeholder="Full Name" class="w-full px-6 py-4 bg-gray-50 rounded-2xl border border-gray-100 outline-none focus:ring-2 focus:ring-blue-500" required>
+                        <input type="email" placeholder="Email" class="w-full px-6 py-4 bg-gray-50 rounded-2xl border border-gray-100 outline-none focus:ring-2 focus:ring-blue-500" required>
+                    </div>
+                    <input type="text" placeholder="Target Destination Country" class="w-full px-6 py-4 bg-gray-50 rounded-2xl border border-gray-100 outline-none focus:ring-2 focus:ring-blue-500" required>
+                    <textarea id="enquiry-text" rows="4" placeholder="Message" class="w-full px-6 py-4 bg-gray-50 rounded-2xl border border-gray-100 outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+                    <button class="w-full bg-blue-600 text-white font-black py-5 rounded-2xl hover:bg-blue-700 transition-all shadow-xl flex items-center justify-center gap-3">
+                        Send Inquiry <i data-lucide="send" class="w-5 h-5"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="absolute right-0 bottom-0 opacity-10 pointer-events-none">
+            <i data-lucide="globe" class="w-[600px] h-[600px]"></i>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-20 bg-white border-t">
+        <div class="max-w-7xl mx-auto px-6 text-center space-y-8">
+            <div class="flex justify-center items-center gap-2">
+                <div class="brand-bg p-2 rounded-lg"><i data-lucide="fish" class="text-white"></i></div>
+                <span class="text-2xl font-black brand-text tracking-tighter">FISHITO</span>
+            </div>
+            <p class="text-gray-400 max-w-md mx-auto">The leading Sri Lankan exporter of premium quality, sun-dried seafood products.</p>
+            <div class="flex justify-center gap-6">
+                <a href="#" class="p-3 bg-gray-50 rounded-full hover:bg-blue-50 text-blue-600 transition-all"><i data-lucide="facebook"></i></a>
+                <a href="#" class="p-3 bg-gray-50 rounded-full hover:bg-red-50 text-red-600 transition-all"><i data-lucide="mail"></i></a>
+            </div>
+            <div class="pt-8 border-t text-xs font-bold text-gray-300 uppercase tracking-widest">
+                © 2024 Fishito Dried Fish (PVT) Ltd. Sri Lanka.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Navbar Scroll Styling
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            const logoText = document.getElementById('logo-text');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            if (window.scrollY > 50) {
+                nav.classList.add('nav-scrolled');
+                logoText.classList.replace('text-white', 'brand-text');
+                navLinks.forEach(link => link.classList.replace('text-white', 'text-gray-700'));
+                document.querySelector('.mobile-btn')?.classList.replace('text-white', 'brand-text');
+            } else {
+                nav.classList.remove('nav-scrolled');
+                logoText.classList.replace('brand-text', 'text-white');
+                navLinks.forEach(link => link.classList.replace('text-gray-700', 'text-white'));
+            }
+        });
+
+        // Product List
+        const products = [
+            { id: 1, name: "Anchovy (HL)", size: "150g", type: "Dried Fish" },
+            { id: 2, name: "Anchovy (HO)", size: "150g", type: "Dried Fish" },
+            { id: 3, name: "Dry Lottia Cut Pcs", size: "150g", type: "Specialty" },
+            { id: 4, name: "Large Shrimp", size: "100g", type: "Shrimp" },
+            { id: 5, name: "Dry Baby Shrimp", size: "100g", type: "Shrimp" },
+            { id: 6, name: "Queen Fish Bone", size: "200g", type: "Specialty" },
+            { id: 7, name: "Chapila", size: "150g", type: "Dried Fish" },
+            { id: 8, name: "Dry Suri Cut Pcs", size: "150g", type: "Dried Fish" },
+            { id: 9, name: "Kiski", size: "100g", type: "Dried Fish" },
+            { id: 10, name: "Mackerel", size: "100g", type: "Dried Fish" }
+        ];
+
+        const container = document.getElementById('product-list');
+        products.forEach(p => {
+            const card = document.createElement('div');
+            card.className = "product-card bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-2xl transition-all group flex flex-col";
+            card.innerHTML = `
+                <div class="h-48 bg-blue-50 rounded-3xl flex items-center justify-center mb-6 group-hover:bg-blue-100 transition-colors">
+                    <i data-lucide="package" class="w-16 h-16 text-blue-200 group-hover:scale-110 group-hover:text-blue-400 transition-all"></i>
+                </div>
+                <div class="text-[10px] font-black text-blue-500 uppercase tracking-[0.2em] mb-2">${p.type}</div>
+                <h4 class="text-xl font-bold brand-text mb-1">${p.name}</h4>
+                <p class="text-sm text-gray-400 mb-8 font-medium">Net Weight: ${p.size}</p>
+                <button onclick="enquire('${p.name}')" class="mt-auto w-full py-4 bg-gray-50 brand-text font-black text-sm rounded-2xl border border-gray-100 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all">Enquire Now</button>
+            `;
+            container.appendChild(card);
+        });
+
+        function enquire(product) {
+            const box = document.getElementById('enquiry-text');
+            box.value = `I am interested in importing ${product}. Please provide the wholesale pricing and shipping details.`;
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Re-init icons for dynamic content
+        lucide.createIcons();
+    </script>
+</body>
+</html>
 
