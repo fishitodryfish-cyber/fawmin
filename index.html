@@ -36,9 +36,14 @@
 
         #product-modal { transition: opacity 0.3s ease; }
         .modal-content { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        
+        /* Mobile menu fixes */
+        #mobile-menu { display: none; }
+        #mobile-menu.active { display: flex; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
+    <!-- Production Deployment Sync - March 2024 -->
 
     <!-- NAVIGATION -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-6">
@@ -51,7 +56,7 @@
                         <i data-lucide="fish" class="text-white w-6 h-6"></i>
                     </div>
                 </div>
-                <span id="logo-text" class="text-2xl font-extrabold tracking-tighter text-white transition-colors">FISHITO</span>
+                <span id="logo-text" class="text-2xl font-extrabold tracking-tighter text-white transition-colors uppercase">FISHITO</span>
             </a>
             
             <div class="hidden md:flex items-center gap-10">
@@ -61,20 +66,20 @@
                 <a href="#contact" class="bg-white brand-text px-8 py-2.5 rounded-full font-extrabold hover:bg-blue-600 hover:text-white transition-all shadow-xl">Enquire Now</a>
             </div>
 
-            <button class="md:hidden text-white mobile-toggle" onclick="document.getElementById('mobile-menu').classList.remove('hidden')">
+            <button class="md:hidden text-white mobile-toggle" onclick="toggleMenu()">
                 <i data-lucide="menu" class="w-8 h-8"></i>
             </button>
         </div>
         
-        <div id="mobile-menu" class="hidden md:hidden bg-white fixed top-0 left-0 w-full h-full z-[60] p-8 flex flex-col gap-6 animate-in slide-in-from-top duration-300">
+        <div id="mobile-menu" class="fixed top-0 left-0 w-full h-full bg-white z-[60] p-8 flex-col gap-6 animate-in slide-in-from-top duration-300">
             <div class="flex justify-between items-center mb-8">
                 <span class="text-2xl font-black brand-text">MENU</span>
-                <button onclick="closeMenu()"><i data-lucide="x" class="w-8 h-8 brand-text"></i></button>
+                <button onclick="toggleMenu()"><i data-lucide="x" class="w-8 h-8 brand-text"></i></button>
             </div>
-            <a href="#home" class="text-gray-900 font-bold text-2xl" onclick="closeMenu()">Home</a>
-            <a href="#about" class="text-gray-900 font-bold text-2xl" onclick="closeMenu()">About</a>
-            <a href="#products" class="text-gray-900 font-bold text-2xl" onclick="closeMenu()">Products</a>
-            <a href="#contact" class="brand-text font-black text-2xl" onclick="closeMenu()">Enquire Now</a>
+            <a href="#home" class="text-gray-900 font-bold text-2xl" onclick="toggleMenu()">Home</a>
+            <a href="#about" class="text-gray-900 font-bold text-2xl" onclick="toggleMenu()">About</a>
+            <a href="#products" class="text-gray-900 font-bold text-2xl" onclick="toggleMenu()">Products</a>
+            <a href="#contact" class="brand-text font-black text-2xl" onclick="toggleMenu()">Enquire Now</a>
         </div>
     </nav>
 
@@ -91,7 +96,7 @@
                     <i data-lucide="globe" class="w-5 h-5"></i>
                     <span class="text-xs font-bold uppercase tracking-[0.2em]">Leading Exporter from Sri Lanka</span>
                 </div>
-                <h1 class="text-6xl md:text-8xl font-black leading-none">
+                <h1 class="text-6xl md:text-8xl font-black leading-none uppercase">
                     Quality <br />
                     <span class="text-blue-400">Sun-Dried</span> <br />
                     Seafood.
@@ -157,7 +162,7 @@
                         <span class="text-xs font-bold text-blue-700">Preservative Free</span>
                     </div>
                 </div>
-                <button onclick="enquireFromModal()" class="w-full brand-bg text-white font-black py-5 rounded-2xl hover:bg-blue-700 transition-all flex items-center justify-center gap-3">
+                <button onclick="enquireFromModal()" class="w-full brand-bg text-white font-black py-5 rounded-2xl hover:bg-blue-700 transition-all flex items-center justify-center gap-3 shadow-xl">
                     Enquire for Wholesale <i data-lucide="arrow-right" class="w-5 h-5"></i>
                 </button>
             </div>
@@ -168,7 +173,7 @@
     <section id="contact" class="py-32 brand-bg text-white">
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
             <div class="space-y-10">
-                <h2 class="text-5xl md:text-6xl font-black leading-tight">Partner with <br /> Fishito Today</h2>
+                <h2 class="text-5xl md:text-6xl font-black leading-tight uppercase">Partner with <br /> Fishito Today</h2>
                 <div class="grid gap-6">
                     <div class="flex items-center gap-6 p-8 rounded-[2rem] bg-white/5 border border-white/10 group hover:bg-white/10 transition-all">
                         <i data-lucide="phone" class="text-blue-400 w-10 h-10"></i>
@@ -207,7 +212,7 @@
         <div class="max-w-7xl mx-auto px-6 space-y-10">
             <div class="flex justify-center items-center gap-3">
                 <img src="logo.jpg" alt="Logo" class="h-10 w-auto" onerror="this.style.display='none';">
-                <span class="text-3xl font-black brand-text tracking-tighter">FISHITO</span>
+                <span class="text-3xl font-black brand-text tracking-tighter uppercase">FISHITO</span>
             </div>
             <div class="pt-10 border-t text-[10px] font-black text-gray-300 uppercase tracking-[0.4em]">
                 © 2024 Fishito Dried Fish (PVT) Ltd. Sri Lanka.
@@ -217,6 +222,7 @@
 
     <script>
         lucide.createIcons();
+        
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             const logoText = document.getElementById('logo-text');
@@ -234,7 +240,11 @@
                 if(mobileToggle) mobileToggle.classList.replace('brand-text', 'text-white');
             }
         });
-        function closeMenu() { document.getElementById('mobile-menu').classList.add('hidden'); }
+
+        function toggleMenu() {
+            document.getElementById('mobile-menu').classList.toggle('active');
+        }
+
         const products = [
             { name: "Anchovy (HL)", size: "150g", type: "Dried Fish", img: "anchovy_hl.png", ing: "Fresh Anchovy, Natural Sea Salt." },
             { name: "Anchovy (HO)", size: "150g", type: "Dried Fish", img: "anchovy_ho.png", ing: "Whole Fresh Anchovy, Natural Sea Salt." },
@@ -247,8 +257,10 @@
             { name: "Kiski", size: "100g", type: "Dried Fish", img: "kiski.png", ing: "Fresh Kiski Fish, Natural Sea Salt." },
             { name: "Mackerel", size: "100g", type: "Dried Fish", img: "mackerel.png", ing: "Fresh Atlantic Mackerel, Sea Salt." }
         ];
+
         let currentProduct = null;
         const list = document.getElementById('product-list');
+        
         products.forEach(p => {
             const card = document.createElement('div');
             card.className = "product-card bg-white p-8 rounded-[3rem] border border-gray-100 shadow-sm flex flex-col";
@@ -263,12 +275,13 @@
                 <div class="text-[10px] font-black text-blue-500 uppercase tracking-[0.2em] mb-3">${p.type}</div>
                 <h4 class="text-2xl font-bold brand-text mb-2">${p.name}</h4>
                 <p class="text-sm text-gray-400 font-bold mb-8 italic">Net Weight: ${p.size}</p>
-                <div class="mt-auto flex items-center gap-2 text-xs font-bold brand-text group-hover:text-blue-500 transition-colors">
-                    View Ingredients <i data-lucide="info" class="w-4 h-4"></i>
+                <div class="mt-auto flex items-center gap-2 text-xs font-bold brand-text">
+                    View Details <i data-lucide="info" class="w-4 h-4"></i>
                 </div>
             `;
             list.appendChild(card);
         });
+
         function openModal(p) {
             currentProduct = p;
             const modal = document.getElementById('product-modal');
@@ -281,6 +294,7 @@
             document.body.style.overflow = 'hidden';
             lucide.createIcons();
         }
+
         function closeModal() {
             const modal = document.getElementById('product-modal');
             const content = modal.querySelector('.modal-content');
@@ -288,6 +302,7 @@
             content.classList.add('scale-95', 'opacity-0');
             setTimeout(() => { modal.classList.add('hidden'); document.body.style.overflow = 'auto'; }, 300);
         }
+
         function enquireFromModal() {
             if (!currentProduct) return;
             closeModal();
@@ -296,6 +311,7 @@
                 document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
             }, 350);
         }
+        
         lucide.createIcons();
     </script>
 </body>
