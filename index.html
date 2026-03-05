@@ -110,7 +110,9 @@
             
             <div class="hidden md:block relative">
                 <div class="relative rounded-[3rem] overflow-hidden border-[16px] border-white/5 shadow-2xl rotate-2 hover:rotate-0 transition-all duration-700">
-                    <img src="https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?auto=format&fit=crop&q=80&w=1000" alt="Fishito Products" class="w-full h-[600px] object-cover">
+                    <!-- Custom hero.jpg from your GitHub, falls back to high quality placeholder if missing -->
+                    <img src="hero.jpg" alt="Fishito Hero" class="w-full h-[600px] object-cover" 
+                         onerror="this.src='https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?auto=format&fit=crop&q=80&w=1000'">
                     <div class="absolute inset-0 bg-gradient-to-t from-[#10193F]/90 via-transparent to-transparent"></div>
                 </div>
             </div>
