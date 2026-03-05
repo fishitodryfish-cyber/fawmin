@@ -7,7 +7,15 @@
     
     <!-- SEO Optimization -->
     <meta name="description" content="Fishito exports premium 100% sun-dried fish from Sri Lanka. FDA and HACCP certified quality seafood for global wholesale.">
-    <meta name="keywords" content="Dried Fish Sri Lanka, Seafood Exporter, Wholesale Dried Fish, Sun Dried Anchovy, Fishito">
+    <meta name="keywords" content="Dried Fish Sri Lanka, Seafood Exporter, Wholesale Dried Fish, Sun Dried Anchovy, Fishito, Sri Lankan Food Export">
+    <link rel="canonical" href="https://fishito.info" />
+    
+    <!-- Social Media Preview (Open Graph) -->
+    <meta property="og:title" content="Fishito | Premium Sri Lankan Dried Fish Exporter">
+    <meta property="og:description" content="100% Naturally Sun-Dried Seafood from Sri Lanka. FDA & HACCP Certified.">
+    <meta property="og:image" content="logo.jpg">
+    <meta property="og:url" content="https://fishito.info">
+    <meta name="twitter:card" content="summary_large_image">
     
     <!-- External Assets -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -23,11 +31,9 @@
         .product-card:hover { transform: translateY(-10px); }
         .hero-gradient { background: linear-gradient(135deg, #10193F 0%, #1e2e74 100%); }
         
-        /* Image hover effect */
         .img-container img { transition: transform 0.6s ease; }
         .product-card:hover .img-container img { transform: scale(1.1); }
 
-        /* Modal Animation */
         #product-modal { transition: opacity 0.3s ease; }
         .modal-content { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
     </style>
@@ -37,12 +43,10 @@
     <!-- NAVIGATION -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-6">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <!-- LOGO AREA -->
             <a href="#home" class="flex items-center gap-3 group">
                 <div class="h-12 w-auto overflow-hidden">
                     <img src="logo.jpg" alt="Fishito Logo" class="h-full w-auto object-contain transition-transform group-hover:scale-105" 
                          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <!-- Fallback if logo.jpg is missing -->
                     <div class="hidden brand-bg p-2 rounded-lg">
                         <i data-lucide="fish" class="text-white w-6 h-6"></i>
                     </div>
@@ -50,7 +54,6 @@
                 <span id="logo-text" class="text-2xl font-extrabold tracking-tighter text-white transition-colors">FISHITO</span>
             </a>
             
-            <!-- DESKTOP MENU -->
             <div class="hidden md:flex items-center gap-10">
                 <a href="#home" class="nav-link text-white hover:text-blue-400 font-bold transition-colors">Home</a>
                 <a href="#about" class="nav-link text-white hover:text-blue-400 font-bold transition-colors">About</a>
@@ -58,14 +61,12 @@
                 <a href="#contact" class="bg-white brand-text px-8 py-2.5 rounded-full font-extrabold hover:bg-blue-600 hover:text-white transition-all shadow-xl">Enquire Now</a>
             </div>
 
-            <!-- MOBILE TOGGLE -->
-            <button class="md:hidden text-white" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+            <button class="md:hidden text-white mobile-toggle" onclick="document.getElementById('mobile-menu').classList.remove('hidden')">
                 <i data-lucide="menu" class="w-8 h-8"></i>
             </button>
         </div>
         
-        <!-- MOBILE MENU -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white fixed top-0 left-0 w-full h-full z-50 p-8 flex flex-col gap-6 animate-in slide-in-from-top duration-300">
+        <div id="mobile-menu" class="hidden md:hidden bg-white fixed top-0 left-0 w-full h-full z-[60] p-8 flex flex-col gap-6 animate-in slide-in-from-top duration-300">
             <div class="flex justify-between items-center mb-8">
                 <span class="text-2xl font-black brand-text">MENU</span>
                 <button onclick="closeMenu()"><i data-lucide="x" class="w-8 h-8 brand-text"></i></button>
@@ -110,7 +111,6 @@
             
             <div class="hidden md:block relative">
                 <div class="relative rounded-[3rem] overflow-hidden border-[16px] border-white/5 shadow-2xl rotate-2 hover:rotate-0 transition-all duration-700">
-                    <!-- Custom hero.jpg from your GitHub, falls back to high quality placeholder if missing -->
                     <img src="hero.jpg" alt="Fishito Hero" class="w-full h-[600px] object-cover" 
                          onerror="this.src='https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?auto=format&fit=crop&q=80&w=1000'">
                     <div class="absolute inset-0 bg-gradient-to-t from-[#10193F]/90 via-transparent to-transparent"></div>
@@ -127,9 +127,7 @@
             <p class="text-gray-500 max-w-xl mx-auto text-lg">Click on any product to see ingredients and nutritional details.</p>
         </div>
 
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10" id="product-list">
-            <!-- JavaScript will inject products here -->
-        </div>
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10" id="product-list"></div>
     </section>
 
     <!-- PRODUCT INFO POPUP (MODAL) -->
@@ -172,7 +170,7 @@
         </div>
     </div>
 
-    <!-- CONTACT / ENQUIRY SECTION -->
+    <!-- CONTACT SECTION -->
     <section id="contact" class="py-32 brand-bg text-white">
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
             <div class="space-y-10">
@@ -194,15 +192,14 @@
                     </div>
                 </div>
             </div>
-
             <div class="bg-white p-12 rounded-[3rem] shadow-2xl text-gray-900">
                 <form onsubmit="event.preventDefault(); alert('Enquiry Sent! Our export team will contact you.');" class="space-y-6">
                     <div class="grid md:grid-cols-2 gap-6">
-                        <input type="text" placeholder="Name" class="w-full px-6 py-5 bg-gray-50 rounded-2xl border border-gray-100 focus:ring-4 focus:ring-blue-100 outline-none font-medium" required>
-                        <input type="email" placeholder="Email" class="w-full px-6 py-5 bg-gray-50 rounded-2xl border border-gray-100 focus:ring-4 focus:ring-blue-100 outline-none font-medium" required>
+                        <input type="text" placeholder="Name" class="w-full px-6 py-5 bg-gray-50 rounded-2xl border border-gray-100 outline-none font-medium" required>
+                        <input type="email" placeholder="Email" class="w-full px-6 py-5 bg-gray-50 rounded-2xl border border-gray-100 outline-none font-medium" required>
                     </div>
-                    <input type="text" placeholder="Target Country" class="w-full px-6 py-5 bg-gray-50 rounded-2xl border border-gray-100 focus:ring-4 focus:ring-blue-100 outline-none font-medium" required>
-                    <textarea id="enquiry-text" rows="4" placeholder="Message" class="w-full px-6 py-5 bg-gray-50 rounded-2xl border border-gray-100 focus:ring-4 focus:ring-blue-100 outline-none font-medium" required></textarea>
+                    <input type="text" placeholder="Target Country" class="w-full px-6 py-5 bg-gray-50 rounded-2xl border border-gray-100 outline-none font-medium" required>
+                    <textarea id="enquiry-text" rows="4" placeholder="Message" class="w-full px-6 py-5 bg-gray-50 rounded-2xl border border-gray-100 outline-none font-medium" required></textarea>
                     <button class="w-full bg-blue-600 text-white font-black py-6 rounded-2xl shadow-xl hover:bg-blue-700 transition-all text-lg flex items-center justify-center gap-3">
                         Send Export Enquiry <i data-lucide="send" class="w-6 h-6"></i>
                     </button>
@@ -212,8 +209,8 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="py-16 bg-white border-t">
-        <div class="max-w-7xl mx-auto px-6 text-center space-y-10">
+    <footer class="py-16 bg-white border-t text-center">
+        <div class="max-w-7xl mx-auto px-6 space-y-10">
             <div class="flex justify-center items-center gap-3">
                 <img src="logo.jpg" alt="Logo" class="h-10 w-auto" onerror="this.style.display='none';">
                 <span class="text-3xl font-black brand-text tracking-tighter">FISHITO</span>
@@ -225,31 +222,25 @@
     </footer>
 
     <script>
-        // Start Lucide
         lucide.createIcons();
-
-        // Nav Scroll Effect
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             const logoText = document.getElementById('logo-text');
             const navLinks = document.querySelectorAll('.nav-link');
-            
+            const mobileToggle = document.querySelector('.mobile-toggle');
             if (window.scrollY > 60) {
                 nav.classList.add('nav-scrolled');
                 logoText.classList.replace('text-white', 'brand-text');
                 navLinks.forEach(link => link.classList.replace('text-white', 'text-gray-700'));
+                if(mobileToggle) mobileToggle.classList.replace('text-white', 'brand-text');
             } else {
                 nav.classList.remove('nav-scrolled');
                 logoText.classList.replace('brand-text', 'text-white');
                 navLinks.forEach(link => link.classList.replace('text-gray-700', 'text-white'));
+                if(mobileToggle) mobileToggle.classList.replace('brand-text', 'text-white');
             }
         });
-
-        function closeMenu() {
-            document.getElementById('mobile-menu').classList.add('hidden');
-        }
-
-        // Product Setup with Ingredients
+        function closeMenu() { document.getElementById('mobile-menu').classList.add('hidden'); }
         const products = [
             { name: "Anchovy (HL)", size: "150g", type: "Dried Fish", img: "anchovy_hl.png", ing: "Fresh Anchovy, Natural Sea Salt." },
             { name: "Anchovy (HO)", size: "150g", type: "Dried Fish", img: "anchovy_ho.png", ing: "Whole Fresh Anchovy, Natural Sea Salt." },
@@ -262,9 +253,7 @@
             { name: "Kiski", size: "100g", type: "Dried Fish", img: "kiski.png", ing: "Fresh Kiski Fish, Natural Sea Salt." },
             { name: "Mackerel", size: "100g", type: "Dried Fish", img: "mackerel.png", ing: "Fresh Atlantic Mackerel, Sea Salt." }
         ];
-
         let currentProduct = null;
-
         const list = document.getElementById('product-list');
         products.forEach(p => {
             const card = document.createElement('div');
@@ -286,39 +275,25 @@
             `;
             list.appendChild(card);
         });
-
         function openModal(p) {
             currentProduct = p;
             const modal = document.getElementById('product-modal');
             const content = modal.querySelector('.modal-content');
-            
             document.getElementById('modal-img').src = p.img;
             document.getElementById('modal-title').innerText = p.name;
             document.getElementById('modal-ingredients').innerText = p.ing;
-            
             modal.classList.remove('hidden');
-            setTimeout(() => {
-                modal.classList.add('opacity-100');
-                content.classList.remove('scale-95', 'opacity-0');
-            }, 10);
-            
+            setTimeout(() => { modal.classList.add('opacity-100'); content.classList.remove('scale-95', 'opacity-0'); }, 10);
             document.body.style.overflow = 'hidden';
             lucide.createIcons();
         }
-
         function closeModal() {
             const modal = document.getElementById('product-modal');
             const content = modal.querySelector('.modal-content');
-            
             modal.classList.remove('opacity-100');
             content.classList.add('scale-95', 'opacity-0');
-            
-            setTimeout(() => {
-                modal.classList.add('hidden');
-                document.body.style.overflow = 'auto';
-            }, 300);
+            setTimeout(() => { modal.classList.add('hidden'); document.body.style.overflow = 'auto'; }, 300);
         }
-
         function enquireFromModal() {
             if (!currentProduct) return;
             closeModal();
@@ -327,7 +302,6 @@
                 document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
             }, 350);
         }
-
         lucide.createIcons();
     </script>
 </body>
