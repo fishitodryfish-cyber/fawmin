@@ -37,6 +37,9 @@
         #product-modal { transition: opacity 0.3s ease; }
         .modal-content { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
         
+        /* Blend mode to hide white background on JPG logos */
+        .logo-img { mix-blend-mode: multiply; }
+        
         /* Mobile menu state */
         #mobile-menu { display: none; }
         #mobile-menu.active { display: flex; }
@@ -50,13 +53,13 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center">
             <a href="#home" class="flex items-center gap-2 md:gap-3 group">
                 <div class="h-10 md:h-12 w-auto overflow-hidden">
-                    <img src="logo.jpg" alt="Fishito Logo" class="h-full w-auto object-contain transition-transform group-hover:scale-105" 
+                    <img src="logo.jpg" alt="Fishito Logo" class="logo-img h-full w-auto object-contain transition-transform group-hover:scale-105" 
                          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <div class="hidden brand-bg p-2 rounded-lg">
                         <i data-lucide="fish" class="text-white w-5 h-5 md:w-6 md:h-6"></i>
                     </div>
                 </div>
-                <span id="logo-text" class="text-xl md:text-2xl font-extrabold tracking-tighter text-white transition-colors uppercase"></span>
+                <span id="logo-text" class="text-xl md:text-2xl font-extrabold tracking-tighter text-white transition-colors uppercase">FISHITO</span>
             </a>
             
             <div class="hidden md:flex items-center gap-10">
@@ -295,7 +298,7 @@
                 <!-- Brand Info -->
                 <div class="space-y-4 md:space-y-6 text-center md:text-left">
                     <div class="flex items-center justify-center md:justify-start gap-3">
-                        <img src="logo.jpg" alt="Logo" class="h-8 md:h-10 w-auto" onerror="this.style.display='none';">
+                        <img src="logo.jpg" alt="Logo" class="logo-img h-8 md:h-10 w-auto" onerror="this.style.display='none';">
                         <span class="text-2xl md:text-3xl font-black brand-text tracking-tighter uppercase">FISHITO</span>
                     </div>
                     <p class="text-gray-500 font-medium leading-relaxed text-sm md:text-base">
@@ -455,4 +458,3 @@
     </script>
 </body>
 </html>
-
