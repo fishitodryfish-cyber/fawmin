@@ -38,7 +38,8 @@
         .modal-content { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
         
         /* Blend mode to hide white background on JPG logos */
-        .logo-img { mix-blend-mode: multiply; }
+        /* Note: multiply makes white transparent */
+        .logo-img { mix-blend-mode: multiply; filter: contrast(1.1); }
         
         /* Mobile menu state */
         #mobile-menu { display: none; }
@@ -51,12 +52,13 @@
     <!-- NAVIGATION -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-4 md:py-6">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center">
-            <a href="#home" class="flex items-center gap-2 md:gap-3 group">
-                <div class="h-10 md:h-12 w-auto overflow-hidden">
+            <!-- LOGO ONLY -->
+            <a href="#home" class="flex items-center group">
+                <div class="h-12 md:h-14 w-auto overflow-hidden rounded-lg">
                     <img src="logo.jpg" alt="Fishito Logo" class="logo-img h-full w-auto object-contain transition-transform group-hover:scale-105" 
                          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <div class="hidden brand-bg p-2 rounded-lg">
-                        <i data-lucide="fish" class="text-white w-5 h-5 md:w-6 md:h-6"></i>
+                        <i data-lucide="fish" class="text-white w-6 h-6"></i>
                     </div>
                 </div>
             </a>
@@ -74,9 +76,9 @@
             </button>
         </div>
         
-        <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-white z-[60] p-8 flex flex-col gap-6 animate-in slide-in-from-top duration-300">
+        <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-white z-[60] p-8 flex-col gap-6 animate-in slide-in-from-top duration-300">
             <div class="flex justify-between items-center mb-8">
-                <span class="text-2xl font-black brand-text">MENU</span>
+                <span class="text-2xl font-black brand-text uppercase tracking-tighter">MENU</span>
                 <button onclick="toggleMenu()" class="p-2"><i data-lucide="x" class="w-8 h-8 brand-text"></i></button>
             </div>
             <a href="#home" class="text-gray-900 font-bold text-2xl" onclick="toggleMenu()">Home</a>
@@ -88,7 +90,7 @@
                 <div class="flex items-center gap-3 text-gray-500 font-bold">
                     <i data-lucide="phone" class="w-5 h-5 brand-text"></i> +94 77 720 4485
                 </div>
-                <div class="flex items-center gap-3 text-gray-500 font-bold">
+                <div class="flex items-center gap-3 text-gray-500 font-bold text-sm">
                     <i data-lucide="mail" class="w-5 h-5 brand-text"></i> sales@fishito.info
                 </div>
             </div>
@@ -160,7 +162,7 @@
                     </div>
                     
                     <p class="text-gray-600 text-base md:text-lg leading-relaxed font-medium text-center lg:text-left">
-                        At <span class="brand-text font-black">FISHITO</span>, we believe that the finest flavors come directly from nature. Based in the pristine coastal regions of Sri Lanka, we have dedicated ourselves to perfecting the ancient art of sun-drying seafood, passed down through generations.
+                        At <span class="brand-text font-black tracking-tighter">FISHITO</span>, we believe that the finest flavors come directly from nature. Based in the pristine coastal regions of Sri Lanka, we have dedicated ourselves to perfecting the ancient art of sun-drying seafood, passed down through generations.
                     </p>
 
                     <div class="space-y-4 md:space-y-6 pt-4">
@@ -169,7 +171,7 @@
                                 <i data-lucide="shield-check" class="text-blue-600 w-5 h-5 md:w-6 md:h-6"></i>
                             </div>
                             <div>
-                                <h4 class="text-lg md:text-xl font-bold brand-text mb-1 md:mb-2">Global Standards</h4>
+                                <h4 class="text-lg md:text-xl font-bold brand-text mb-1 md:mb-2 uppercase">Global Standards</h4>
                                 <p class="text-gray-500 text-xs md:text-sm">We strictly adhere to FDA, HACCP, and Halal certifications, ensuring every export meets the highest international safety and hygiene requirements.</p>
                             </div>
                         </div>
@@ -179,7 +181,7 @@
                                 <i data-lucide="sun" class="text-green-600 w-5 h-5 md:w-6 md:h-6"></i>
                             </div>
                             <div>
-                                <h4 class="text-lg md:text-xl font-bold brand-text mb-1 md:mb-2">Artisanal Sun-Drying</h4>
+                                <h4 class="text-lg md:text-xl font-bold brand-text mb-1 md:mb-2 uppercase">Artisanal Sun-Drying</h4>
                                 <p class="text-gray-500 text-xs md:text-sm">Our products are 100% naturally sun-dried without any artificial preservatives, retaining the nutrient density and authentic ocean flavor.</p>
                             </div>
                         </div>
@@ -189,7 +191,7 @@
                                 <i data-lucide="package-check" class="text-indigo-600 w-5 h-5 md:w-6 md:h-6"></i>
                             </div>
                             <div>
-                                <h4 class="text-lg md:text-xl font-bold brand-text mb-1 md:mb-2">Export Ready Packaging</h4>
+                                <h4 class="text-lg md:text-xl font-bold brand-text mb-1 md:mb-2 uppercase">Export Ready Packaging</h4>
                                 <p class="text-gray-500 text-xs md:text-sm">Specialized vacuum-sealed packaging designed for long-distance transit, guaranteeing fresh arrival globally.</p>
                             </div>
                         </div>
@@ -219,7 +221,7 @@
             <div id="modal-image-container" class="h-48 md:h-64 bg-gray-100 relative shrink-0">
                 <img id="modal-img" src="" alt="" class="w-full h-full object-cover">
                 <div class="absolute bottom-0 left-0 w-full p-6 md:p-8 bg-gradient-to-t from-black/60 to-transparent">
-                    <h4 id="modal-title" class="text-xl md:text-3xl font-black text-white uppercase"></h4>
+                    <h4 id="modal-title" class="text-xl md:text-3xl font-black text-white uppercase tracking-tighter"></h4>
                 </div>
             </div>
             <div class="p-6 md:p-8 space-y-5 md:space-y-6 overflow-y-auto">
@@ -268,7 +270,7 @@
                         <i data-lucide="mail" class="text-blue-400 w-8 h-8 md:w-10 md:h-10 transition-transform group-hover:-rotate-12"></i>
                         <div>
                             <div class="text-[10px] font-bold text-blue-400 uppercase tracking-widest mb-1">Inquiry Email</div>
-                            <div class="text-lg md:text-2xl font-bold break-all">sales@fishito.info</div>
+                            <div class="text-lg md:text-2xl font-bold break-all lowercase">sales@fishito.info</div>
                         </div>
                     </div>
                 </div>
@@ -296,8 +298,8 @@
             <div class="grid md:grid-cols-3 gap-10 md:gap-12 items-start mb-12 md:mb-16">
                 <!-- Brand Info -->
                 <div class="space-y-4 md:space-y-6 text-center md:text-left">
-                    <div class="flex items-center justify-center md:justify-start gap-3">
-                        <img src="logo.jpg" alt="Logo" class="logo-img h-8 md:h-10 w-auto" onerror="this.style.display='none';">
+                    <div class="flex items-center justify-center md:justify-start">
+                        <img src="logo.jpg" alt="Logo" class="logo-img h-12 md:h-16 w-auto" onerror="this.style.display='none';">
                     </div>
                     <p class="text-gray-500 font-medium leading-relaxed text-sm md:text-base">
                         Bringing the premium sun-dried seafood treasures of Sri Lanka to kitchens across the globe. 100% natural and organic processing.
@@ -313,16 +315,16 @@
                 <div class="space-y-4 md:space-y-6 text-center md:text-left">
                     <h5 class="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">Navigation</h5>
                     <ul class="space-y-3 md:space-y-4 font-bold brand-text text-sm">
-                        <li><a href="#home" class="hover:text-blue-500 transition-colors">Home</a></li>
-                        <li><a href="#about" class="hover:text-blue-500 transition-colors">About Us</a></li>
-                        <li><a href="#products" class="hover:text-blue-500 transition-colors">Export Catalog</a></li>
-                        <li><a href="#contact" class="hover:text-blue-500 transition-colors">Inquiry</a></li>
+                        <li><a href="#home" class="hover:text-blue-500 transition-colors uppercase">Home</a></li>
+                        <li><a href="#about" class="hover:text-blue-500 transition-colors uppercase">About Us</a></li>
+                        <li><a href="#products" class="hover:text-blue-500 transition-colors uppercase">Export Catalog</a></li>
+                        <li><a href="#contact" class="hover:text-blue-500 transition-colors uppercase">Inquiry</a></li>
                     </ul>
                 </div>
 
                 <!-- Contact Details -->
                 <div class="space-y-4 md:space-y-6 text-center md:text-left">
-                    <h5 class="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">Contact Details</h5>
+                    <h5 class="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 uppercase">Contact Details</h5>
                     <div class="space-y-3 md:space-y-4">
                         <div class="flex items-center justify-center md:justify-start gap-4 text-gray-600 group">
                             <div class="bg-blue-50 p-2 rounded-lg group-hover:bg-blue-100 transition-colors">
@@ -382,6 +384,10 @@
             }
         }
 
+        function closeMenu() {
+            document.getElementById('mobile-menu').style.display = 'none';
+        }
+
         const products = [
             { name: "Anchovy (HL)", size: "150g", type: "Dried Fish", img: "anchovy_hl.png", ing: "Fresh Anchovy, Natural Sea Salt." },
             { name: "Anchovy (HO)", size: "150g", type: "Dried Fish", img: "anchovy_ho.png", ing: "Whole Fresh Anchovy, Natural Sea Salt." },
@@ -403,14 +409,14 @@
             card.className = "product-card bg-white p-6 md:p-8 rounded-2xl md:rounded-[3rem] border border-gray-100 shadow-sm flex flex-col";
             card.onclick = () => openModal(p);
             card.innerHTML = `
-                <div class="img-container h-48 md:h-56 bg-gray-100 rounded-xl md:rounded-[2rem] overflow-hidden mb-6 md:mb-8 relative">
+                <div class="img-container h-48 md:h-56 bg-gray-100 rounded-xl md:rounded-[2rem] overflow-hidden mb-6 md:mb-8 relative text-center">
                     <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="hidden absolute inset-0 items-center justify-center bg-blue-50">
                         <i data-lucide="package" class="w-12 h-12 md:w-16 md:h-16 text-blue-100"></i>
                     </div>
                 </div>
                 <div class="text-[10px] font-black text-blue-500 uppercase tracking-[0.2em] mb-2 md:mb-3">${p.type}</div>
-                <h4 class="text-xl md:text-2xl font-bold brand-text mb-1 md:mb-2 uppercase">${p.name}</h4>
+                <h4 class="text-xl md:text-2xl font-bold brand-text mb-1 md:mb-2 uppercase tracking-tighter">${p.name}</h4>
                 <p class="text-xs md:text-sm text-gray-400 font-bold mb-6 md:mb-8 italic">Net Weight: ${p.size}</p>
                 <div class="mt-auto flex items-center gap-2 text-[10px] md:text-xs font-bold brand-text group-hover:text-blue-500 transition-colors uppercase tracking-widest">
                     View Details <i data-lucide="info" class="w-4 h-4"></i>
