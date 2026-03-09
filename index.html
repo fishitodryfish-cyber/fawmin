@@ -77,7 +77,7 @@
                 <button onclick="toggleMenu()"><i data-lucide="x" class="w-8 h-8 brand-text"></i></button>
             </div>
             <a href="#home" class="text-gray-900 font-bold text-2xl" onclick="toggleMenu()">Home</a>
-            <a href="#about" class="text-gray-900 font-bold text-2xl" onclick="toggleMenu()">About</a>
+            <a href="#about" class="text-gray-900 font-bold text-2xl" onclick="closeMenu()">About</a>
             <a href="#products" class="text-gray-900 font-bold text-2xl" onclick="toggleMenu()">Products</a>
             <a href="#contact" class="brand-text font-black text-2xl" onclick="toggleMenu()">Enquire Now</a>
         </div>
@@ -274,15 +274,72 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="py-16 bg-white border-t text-center">
-        <div class="max-w-7xl mx-auto px-6 space-y-10">
-            <div class="flex justify-center items-center gap-3">
-                <img src="logo.jpg" alt="Logo" class="h-10 w-auto" onerror="this.style.display='none';">
-                <span class="text-3xl font-black brand-text tracking-tighter uppercase">FISHITO</span>
+    <footer class="py-20 bg-white border-t">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-12 items-start mb-16">
+                <!-- Brand Info -->
+                <div class="space-y-6">
+                    <div class="flex items-center gap-3">
+                        <img src="logo.jpg" alt="Logo" class="h-10 w-auto" onerror="this.style.display='none';">
+                        <span class="text-3xl font-black brand-text tracking-tighter uppercase">FISHITO</span>
+                    </div>
+                    <p class="text-gray-500 font-medium leading-relaxed">
+                        Bringing the premium sun-dried seafood treasures of Sri Lanka to kitchens across the globe. 100% natural and organic processing.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://facebook.com/fishito" target="_blank" class="p-3 bg-gray-50 rounded-full text-blue-600 hover:bg-blue-600 hover:text-white transition-all shadow-sm">
+                            <i data-lucide="facebook"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="space-y-6">
+                    <h5 class="text-xs font-black uppercase tracking-[0.2em] text-gray-400">Navigation</h5>
+                    <ul class="space-y-4 font-bold brand-text text-sm">
+                        <li><a href="#home" class="hover:text-blue-500 transition-colors">Home</a></li>
+                        <li><a href="#about" class="hover:text-blue-500 transition-colors">About Us</a></li>
+                        <li><a href="#products" class="hover:text-blue-500 transition-colors">Export Catalog</a></li>
+                        <li><a href="#contact" class="hover:text-blue-500 transition-colors">Inquiry</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Details -->
+                <div class="space-y-6">
+                    <h5 class="text-xs font-black uppercase tracking-[0.2em] text-gray-400">Contact Details</h5>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4 text-gray-600 group">
+                            <div class="bg-blue-50 p-2 rounded-lg group-hover:bg-blue-100 transition-colors">
+                                <i data-lucide="phone" class="w-5 h-5 text-blue-600"></i>
+                            </div>
+                            <span class="font-bold">+94 77 720 4485</span>
+                        </div>
+                        <div class="flex items-center gap-4 text-gray-600 group">
+                            <div class="bg-blue-50 p-2 rounded-lg group-hover:bg-blue-100 transition-colors">
+                                <i data-lucide="mail" class="w-5 h-5 text-blue-600"></i>
+                            </div>
+                            <span class="font-bold lowercase">sales@fishito.info</span>
+                        </div>
+                        <div class="flex items-center gap-4 text-gray-600 group">
+                            <div class="bg-blue-50 p-2 rounded-lg group-hover:bg-blue-100 transition-colors">
+                                <i data-lucide="globe" class="w-5 h-5 text-blue-600"></i>
+                            </div>
+                            <span class="font-bold lowercase">www.fishito.info</span>
+                        </div>
+                        <div class="flex items-center gap-4 text-gray-600 group">
+                            <div class="bg-blue-50 p-2 rounded-lg group-hover:bg-blue-100 transition-colors">
+                                <i data-lucide="map-pin" class="w-5 h-5 text-blue-600"></i>
+                            </div>
+                            <span class="font-bold uppercase tracking-widest text-xs">Sri Lanka</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <p class="text-gray-400 font-medium max-w-lg mx-auto italic">Bringing the premium sun-dried seafood treasures of Sri Lanka to kitchens across the globe.</p>
-            <div class="pt-10 border-t text-[10px] font-black text-gray-300 uppercase tracking-[0.4em]">
-                © 2024 Fishito Dried Fish (PVT) Ltd. Sri Lanka.
+
+            <div class="pt-10 border-t text-center">
+                <div class="text-[10px] font-black text-gray-300 uppercase tracking-[0.4em]">
+                    © 2024 Fishito Dried Fish (PVT) Ltd. Sri Lanka.
+                </div>
             </div>
         </div>
     </footer>
