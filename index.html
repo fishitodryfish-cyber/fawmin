@@ -59,7 +59,6 @@
                         <i data-lucide="fish" class="text-white w-5 h-5 md:w-6 md:h-6"></i>
                     </div>
                 </div>
-                <span id="logo-text" class="text-xl md:text-2xl font-extrabold tracking-tighter text-white transition-colors uppercase">FISHITO</span>
             </a>
             
             <div class="hidden md:flex items-center gap-10">
@@ -75,7 +74,7 @@
             </button>
         </div>
         
-        <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-white z-[60] p-8 flex-col gap-6 animate-in slide-in-from-top duration-300">
+        <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-white z-[60] p-8 flex flex-col gap-6 animate-in slide-in-from-top duration-300">
             <div class="flex justify-between items-center mb-8">
                 <span class="text-2xl font-black brand-text">MENU</span>
                 <button onclick="toggleMenu()" class="p-2"><i data-lucide="x" class="w-8 h-8 brand-text"></i></button>
@@ -299,7 +298,6 @@
                 <div class="space-y-4 md:space-y-6 text-center md:text-left">
                     <div class="flex items-center justify-center md:justify-start gap-3">
                         <img src="logo.jpg" alt="Logo" class="logo-img h-8 md:h-10 w-auto" onerror="this.style.display='none';">
-                        <span class="text-2xl md:text-3xl font-black brand-text tracking-tighter uppercase">FISHITO</span>
                     </div>
                     <p class="text-gray-500 font-medium leading-relaxed text-sm md:text-base">
                         Bringing the premium sun-dried seafood treasures of Sri Lanka to kitchens across the globe. 100% natural and organic processing.
@@ -361,18 +359,15 @@
         
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
-            const logoText = document.getElementById('logo-text');
             const navLinks = document.querySelectorAll('.nav-link');
             const mobileToggle = document.querySelector('.mobile-toggle');
             
             if (window.scrollY > 60) {
                 nav.classList.add('nav-scrolled');
-                logoText.classList.replace('text-white', 'brand-text');
                 navLinks.forEach(link => link.classList.replace('text-white', 'text-gray-700'));
                 if(mobileToggle) mobileToggle.classList.replace('text-white', 'brand-text');
             } else {
                 nav.classList.remove('nav-scrolled');
-                logoText.classList.replace('brand-text', 'text-white');
                 navLinks.forEach(link => link.classList.replace('text-gray-700', 'text-white'));
                 if(mobileToggle) mobileToggle.classList.replace('brand-text', 'text-white');
             }
