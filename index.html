@@ -34,27 +34,27 @@
         .text-brand-navy { color: #0B132B; }
         .text-brand-blue { color: #10193F; }
         
-        /* Glassmorphism Navigation */
-        .nav-scrolled { 
-            background: rgba(255, 255, 255, 0.94); 
-            backdrop-filter: blur(14px); 
-            box-shadow: 0 10px 25px -5px rgba(11, 19, 43, 0.08); 
-            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
-            padding-top: 0.75rem; 
-            padding-bottom: 0.75rem; 
+        /* Guaranteed Persistent Dark Navbar */
+        #navbar { 
+            background-color: rgba(11, 19, 43, 0.97) !important; 
+            backdrop-filter: blur(16px); 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.35);
+            transition: all 0.3s ease; 
+        }
+        #navbar.scrolled { 
+            padding-top: 0.65rem; 
+            padding-bottom: 0.65rem; 
         }
         
-        /* Gradients */
-        .hero-bg {
-            background: radial-gradient(circle at 80% 20%, #1e2e74 0%, #10193F 45%, #0B132B 100%);
+        /* Guaranteed Deep Navy Hero Background (Never White) */
+        .hero-section {
+            background-color: #070D1E !important;
+            background: linear-gradient(135deg, #070D1E 0%, #0B132B 35%, #10193F 75%, #18286A 100%) !important;
         }
+
         .accent-gradient-text {
             background: linear-gradient(135deg, #38bdf8 0%, #60a5fa 50%, #93c5fd 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .gold-gradient-text {
-            background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -85,13 +85,13 @@
         #product-modal { transition: opacity 0.3s ease; }
         .modal-content { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
 
-        /* Subtle Grid Pattern */
-        .bg-grid-pattern {
-            background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+        /* Separate Overlay Grid Patterns (Never applied directly to background) */
+        .grid-dots-light {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
             background-size: 28px 28px;
         }
-        .bg-grid-pattern-dark {
-            background-image: radial-gradient(rgba(16, 25, 63, 0.05) 1px, transparent 1px);
+        .grid-dots-dark {
+            background-image: radial-gradient(rgba(16, 25, 63, 0.06) 1px, transparent 1px);
             background-size: 24px 24px;
         }
     </style>
@@ -99,7 +99,7 @@
 <body class="bg-slate-50 text-slate-800 antialiased overflow-x-hidden selection:bg-blue-600 selection:text-white">
 
     <!-- TOP ANNOUNCEMENT BANNER -->
-    <div class="bg-[#070D1E] text-slate-300 text-xs py-2 px-4 border-b border-white/5 relative z-50">
+    <div class="bg-[#050914] text-slate-300 text-xs py-2 px-4 border-b border-white/5 relative z-50">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
             <div class="flex items-center gap-3">
                 <span class="inline-flex items-center gap-1.5 text-emerald-400 font-bold uppercase tracking-wider text-[10px]">
@@ -107,7 +107,7 @@
                     2026 Export Season Open
                 </span>
                 <span class="hidden md:inline text-slate-500">•</span>
-                <span class="hidden md:inline text-slate-400">Direct From Sri Lankan Coastal Facilities • FOB Colombo & CIF Worldwide</span>
+                <span class="hidden md:inline text-slate-300">Direct From Sri Lankan Coastal Facilities • FOB Colombo &amp; CIF Worldwide</span>
             </div>
             <div class="flex items-center gap-5 text-[11px] font-semibold text-slate-300">
                 <a href="https://wa.me/94777204485" target="_blank" class="hover:text-emerald-400 transition-colors flex items-center gap-1.5">
@@ -121,29 +121,29 @@
         </div>
     </div>
 
-    <!-- MAIN NAVIGATION -->
-    <nav id="navbar" class="fixed w-full z-40 transition-all duration-300 py-4 top-[33px]">
+    <!-- MAIN NAVIGATION (High-Contrast Dark Glassmorphism) -->
+    <nav id="navbar" class="fixed w-full z-40 py-3.5 top-[33px]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center">
-            <!-- BRAND LOGO -->
+            <!-- BRAND LOGO IN WHITE PILL CONTAINER -->
             <a href="#home" class="flex items-center group">
-                <div class="bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-2xl shadow-lg border border-white/40 flex items-center transition-transform group-hover:scale-105">
+                <div class="bg-white px-3.5 py-1.5 rounded-2xl shadow-md border border-slate-200 flex items-center transition-transform group-hover:scale-105">
                     <img src="logo.jpg" alt="Fishito Dried Fish Exporters" class="h-9 sm:h-10 w-auto object-contain">
                 </div>
             </a>
             
             <!-- DESKTOP NAV LINKS -->
             <div class="hidden lg:flex items-center gap-8">
-                <a href="#home" class="nav-link text-white/90 hover:text-cyan-300 font-bold text-sm tracking-wide transition-colors">Home</a>
-                <a href="#heritage" class="nav-link text-white/90 hover:text-cyan-300 font-bold text-sm tracking-wide transition-colors">Heritage & Quality</a>
-                <a href="#process" class="nav-link text-white/90 hover:text-cyan-300 font-bold text-sm tracking-wide transition-colors">Process</a>
-                <a href="#products" class="nav-link text-white/90 hover:text-cyan-300 font-bold text-sm tracking-wide transition-colors">Export Varieties</a>
-                <a href="#comparison" class="nav-link text-white/90 hover:text-cyan-300 font-bold text-sm tracking-wide transition-colors">Why Fishito</a>
-                <a href="#contact" class="nav-link text-white/90 hover:text-cyan-300 font-bold text-sm tracking-wide transition-colors">Wholesale Inquiry</a>
+                <a href="#home" class="text-white hover:text-cyan-300 font-bold text-sm tracking-wide transition-colors">Home</a>
+                <a href="#heritage" class="text-slate-200 hover:text-cyan-300 font-bold text-sm tracking-wide transition-colors">Heritage &amp; Quality</a>
+                <a href="#process" class="text-slate-200 hover:text-cyan-300 font-bold text-sm tracking-wide transition-colors">Process</a>
+                <a href="#products" class="text-slate-200 hover:text-cyan-300 font-bold text-sm tracking-wide transition-colors">Export Varieties</a>
+                <a href="#comparison" class="text-slate-200 hover:text-cyan-300 font-bold text-sm tracking-wide transition-colors">Why Fishito</a>
+                <a href="#contact" class="text-slate-200 hover:text-cyan-300 font-bold text-sm tracking-wide transition-colors">Wholesale Inquiry</a>
             </div>
 
             <!-- RIGHT CTA BUTTON -->
             <div class="hidden sm:flex items-center gap-3">
-                <a href="https://wa.me/94777204485?text=Hello%20Fishito,%20I%20am%20interested%20in%20an%20export%20quotation." target="_blank" class="bg-emerald-600/90 hover:bg-emerald-600 text-white p-2.5 rounded-full shadow-lg transition-transform hover:scale-105" title="Chat on WhatsApp">
+                <a href="https://wa.me/94777204485?text=Hello%20Fishito,%20I%20am%20interested%20in%20an%20export%20quotation." target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white p-2.5 rounded-full shadow-lg transition-transform hover:scale-105" title="Chat on WhatsApp">
                     <i data-lucide="message-circle" class="w-5 h-5"></i>
                 </a>
                 <a href="#contact" class="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white px-6 py-2.5 rounded-full font-extrabold text-xs uppercase tracking-wider transition-all shadow-xl hover:shadow-cyan-500/25 flex items-center gap-2">
@@ -152,16 +152,16 @@
             </div>
 
             <!-- MOBILE TOGGLE -->
-            <button class="lg:hidden text-white mobile-toggle p-2 rounded-xl bg-white/10 backdrop-blur-md border border-white/10" onclick="toggleMenu()" aria-label="Toggle Menu">
+            <button class="lg:hidden text-white p-2 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-colors" onclick="toggleMenu()" aria-label="Toggle Menu">
                 <i data-lucide="menu" class="w-6 h-6"></i>
             </button>
         </div>
         
         <!-- MOBILE DRAWER MENU -->
-        <div id="mobile-menu" class="fixed inset-0 bg-[#0B132B]/95 backdrop-blur-xl z-[60] p-6 flex-col justify-between hidden">
+        <div id="mobile-menu" class="fixed inset-0 bg-[#0B132B]/98 backdrop-blur-2xl z-[60] p-6 flex-col justify-between hidden">
             <div>
                 <div class="flex justify-between items-center pb-6 border-b border-white/10">
-                    <div class="bg-white px-3 py-1 rounded-xl">
+                    <div class="bg-white px-3.5 py-1.5 rounded-xl shadow">
                         <img src="logo.jpg" alt="Fishito" class="h-8 w-auto">
                     </div>
                     <button onclick="toggleMenu()" class="p-2 text-white/80 hover:text-white rounded-full bg-white/10">
@@ -170,7 +170,7 @@
                 </div>
                 <div class="flex flex-col gap-5 mt-8">
                     <a href="#home" class="text-white text-xl font-extrabold hover:text-cyan-400 transition-colors" onclick="toggleMenu()">Home</a>
-                    <a href="#heritage" class="text-white text-xl font-extrabold hover:text-cyan-400 transition-colors" onclick="toggleMenu()">Heritage & Standards</a>
+                    <a href="#heritage" class="text-white text-xl font-extrabold hover:text-cyan-400 transition-colors" onclick="toggleMenu()">Heritage &amp; Standards</a>
                     <a href="#process" class="text-white text-xl font-extrabold hover:text-cyan-400 transition-colors" onclick="toggleMenu()">Artisanal Process</a>
                     <a href="#products" class="text-white text-xl font-extrabold hover:text-cyan-400 transition-colors" onclick="toggleMenu()">Export Catalog</a>
                     <a href="#comparison" class="text-white text-xl font-extrabold hover:text-cyan-400 transition-colors" onclick="toggleMenu()">The Fishito Advantage</a>
@@ -179,7 +179,7 @@
             </div>
             
             <div class="pt-6 border-t border-white/10 space-y-4">
-                <a href="#contact" onclick="toggleMenu()" class="w-full bg-blue-600 text-white font-black py-4 rounded-xl text-center block uppercase tracking-wider text-sm shadow-xl">
+                <a href="#contact" onclick="toggleMenu()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-4 rounded-xl text-center block uppercase tracking-wider text-sm shadow-xl">
                     Request Export Quote
                 </a>
                 <div class="flex items-center justify-between text-xs text-slate-300 font-semibold px-2">
@@ -190,61 +190,62 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <section id="home" class="relative min-h-screen flex items-center hero-bg bg-grid-pattern overflow-hidden pt-36 pb-20 md:py-32">
-        <!-- Ambient Glowing Orbs -->
+    <!-- HERO SECTION (Deep Midnight Navy - Guaranteed High Contrast) -->
+    <section id="home" class="relative min-h-screen flex items-center hero-section overflow-hidden pt-36 pb-20 md:py-32 text-white">
+        <!-- Separate Ambient Layer (Does NOT conflict with background) -->
         <div class="absolute inset-0 pointer-events-none">
-            <div class="absolute top-1/4 right-10 w-96 h-96 bg-cyan-500/15 rounded-full blur-[140px]"></div>
-            <div class="absolute bottom-10 left-10 w-96 h-96 bg-blue-600/20 rounded-full blur-[150px]"></div>
+            <div class="absolute inset-0 grid-dots-light opacity-30"></div>
+            <div class="absolute top-1/4 right-10 w-96 h-96 bg-cyan-500/20 rounded-full blur-[140px]"></div>
+            <div class="absolute bottom-10 left-10 w-96 h-96 bg-blue-600/25 rounded-full blur-[150px]"></div>
         </div>
         
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <!-- LEFT CONTENT COLUMN (7 cols) -->
-            <div class="lg:col-span-7 text-white space-y-6 sm:space-y-8 text-center lg:text-left">
+            <div class="lg:col-span-7 space-y-6 sm:space-y-8 text-center lg:text-left">
                 <!-- Eyebrow Badge -->
-                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/15 text-cyan-300 shadow-lg">
+                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 text-cyan-300 shadow-lg">
                     <span class="text-lg">🇱🇰</span>
-                    <span class="text-xs font-black uppercase tracking-widest">Sri Lanka's Premier Seafood Exporter</span>
+                    <span class="text-xs font-black uppercase tracking-widest text-white">Sri Lanka's Premier Seafood Exporter</span>
                 </div>
                 
                 <!-- Main Headline -->
-                <h1 class="text-4xl sm:text-6xl md:text-7xl font-black leading-[1.08] tracking-tight">
+                <h1 class="text-4xl sm:text-6xl md:text-7xl font-black leading-[1.08] tracking-tight text-white">
                     The Gold Standard In <br class="hidden sm:block" />
                     <span class="accent-gradient-text">Sun-Dried Seafood</span>
                 </h1>
                 
                 <!-- Description -->
-                <p class="text-base sm:text-lg md:text-xl text-slate-300 max-w-2xl mx-auto lg:mx-0 font-medium leading-relaxed">
+                <p class="text-base sm:text-lg md:text-xl text-slate-200 max-w-2xl mx-auto lg:mx-0 font-medium leading-relaxed">
                     Harvested fresh from the pristine equatorial waters of Sri Lanka. 100% naturally cured under tropical sun on hygienic elevated racks with pure Ceylon sea salt — certified for wholesale international export.
                 </p>
 
                 <!-- Value Props Micro-Grid -->
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 text-left">
-                    <div class="bg-white/5 backdrop-blur-sm p-3.5 rounded-2xl border border-white/10">
-                        <div class="text-xl sm:text-2xl font-black text-white">100%</div>
-                        <div class="text-[11px] font-bold text-cyan-300 uppercase tracking-wider">Natural Sun-Cured</div>
+                    <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/20 shadow-md">
+                        <div class="text-2xl sm:text-3xl font-black text-white">100%</div>
+                        <div class="text-[11px] font-bold text-cyan-300 uppercase tracking-wider mt-0.5">Natural Sun-Cured</div>
                     </div>
-                    <div class="bg-white/5 backdrop-blur-sm p-3.5 rounded-2xl border border-white/10">
-                        <div class="text-xl sm:text-2xl font-black text-white">0%</div>
-                        <div class="text-[11px] font-bold text-amber-300 uppercase tracking-wider">Chemicals / MSG</div>
+                    <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/20 shadow-md">
+                        <div class="text-2xl sm:text-3xl font-black text-white">0%</div>
+                        <div class="text-[11px] font-bold text-amber-300 uppercase tracking-wider mt-0.5">Chemicals / MSG</div>
                     </div>
-                    <div class="bg-white/5 backdrop-blur-sm p-3.5 rounded-2xl border border-white/10">
+                    <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/20 shadow-md">
                         <div class="text-xl sm:text-2xl font-black text-white">FDA &amp; HACCP</div>
-                        <div class="text-[11px] font-bold text-emerald-300 uppercase tracking-wider">Certified Hygiene</div>
+                        <div class="text-[11px] font-bold text-emerald-300 uppercase tracking-wider mt-0.5">Certified Hygiene</div>
                     </div>
-                    <div class="bg-white/5 backdrop-blur-sm p-3.5 rounded-2xl border border-white/10">
-                        <div class="text-xl sm:text-2xl font-black text-white">12+ Mo.</div>
-                        <div class="text-[11px] font-bold text-blue-300 uppercase tracking-wider">Shelf Stability</div>
+                    <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/20 shadow-md">
+                        <div class="text-2xl sm:text-3xl font-black text-white">12+ Mo.</div>
+                        <div class="text-[11px] font-bold text-blue-300 uppercase tracking-wider mt-0.5">Shelf Stability</div>
                     </div>
                 </div>
 
                 <!-- Call to Actions -->
                 <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
-                    <a href="#products" class="bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white px-8 py-4 rounded-2xl font-black transition-all transform hover:-translate-y-0.5 shadow-xl hover:shadow-cyan-500/25 flex items-center justify-center gap-3 text-sm uppercase tracking-wider">
+                    <a href="#products" class="bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white px-8 py-4 rounded-2xl font-black transition-all transform hover:-translate-y-0.5 shadow-xl hover:shadow-cyan-500/30 flex items-center justify-center gap-3 text-sm uppercase tracking-wider">
                         Explore Export Catalog <i data-lucide="arrow-down-right" class="w-4 h-4"></i>
                     </a>
-                    <a href="https://wa.me/94777204485?text=Hello%20Fishito,%20I%20am%20interested%20in%20an%20export%20quotation." target="_blank" class="bg-white/10 hover:bg-white/15 text-white border border-white/20 px-8 py-4 rounded-2xl font-black transition-all flex items-center justify-center gap-3 text-sm uppercase tracking-wider backdrop-blur-md">
-                        <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400"></i> WhatsApp Sales
+                    <a href="https://wa.me/94777204485?text=Hello%20Fishito,%20I%20am%20interested%20in%20an%20export%20quotation." target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-4 rounded-2xl font-black transition-all transform hover:-translate-y-0.5 shadow-xl hover:shadow-emerald-500/30 flex items-center justify-center gap-3 text-sm uppercase tracking-wider">
+                        <i data-lucide="message-circle" class="w-5 h-5"></i> Chat on WhatsApp
                     </a>
                 </div>
             </div>
@@ -254,12 +255,12 @@
                 <!-- Backdrop Frame -->
                 <div class="relative w-full max-w-md sm:max-w-lg">
                     <!-- Main Hero Photograph -->
-                    <div class="relative rounded-3xl overflow-hidden border-4 border-white/10 shadow-2xl bg-slate-900 aspect-square">
-                        <img src="hero.jpg" alt="Sri Lankan Fishery & Sun-Drying Heritage" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#0B132B]/90 via-transparent to-transparent"></div>
+                    <div class="relative rounded-3xl overflow-hidden border-4 border-white/20 shadow-2xl bg-slate-900 aspect-square">
+                        <img src="hero.jpg" alt="Sri Lankan Fishery &amp; Sun-Drying Heritage" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#070D1E]/95 via-transparent to-transparent"></div>
                         
                         <div class="absolute bottom-6 left-6 right-6 text-white">
-                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 backdrop-blur-md mb-2">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-emerald-500/25 text-emerald-300 border border-emerald-400/40 backdrop-blur-md mb-2">
                                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Traditional Craftsmanship
                             </span>
                             <h3 class="text-xl sm:text-2xl font-black tracking-tight leading-snug">
@@ -269,7 +270,7 @@
                     </div>
 
                     <!-- Floating Retail Pouch Badge (Bottom Left) -->
-                    <div class="absolute -bottom-6 -left-4 sm:-left-8 bg-white/95 backdrop-blur-xl p-3.5 sm:p-4 rounded-2xl shadow-2xl border border-slate-100 flex items-center gap-3 sm:gap-4 max-w-[260px] transform hover:scale-105 transition-transform">
+                    <div class="absolute -bottom-6 -left-4 sm:-left-8 bg-white/95 backdrop-blur-xl p-3.5 sm:p-4 rounded-2xl shadow-2xl border border-slate-200 flex items-center gap-3 sm:gap-4 max-w-[260px] transform hover:scale-105 transition-transform text-slate-900">
                         <div class="w-14 h-14 bg-gradient-to-b from-blue-50 to-slate-100 rounded-xl p-1 flex items-center justify-center shrink-0 border border-slate-200">
                             <img src="anchovy_hl.png" alt="Fishito Anchovy Retail Pack" class="w-full h-full object-contain filter drop-shadow">
                         </div>
@@ -322,8 +323,9 @@
     </div>
 
     <!-- HERITAGE & QUALITY SECTION -->
-    <section id="heritage" class="py-20 md:py-32 bg-white relative overflow-hidden bg-grid-pattern-dark">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <section id="heritage" class="py-20 md:py-32 bg-white relative overflow-hidden">
+        <div class="absolute inset-0 grid-dots-dark pointer-events-none opacity-50"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
             <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                 <!-- Visual Composition -->
                 <div class="relative order-2 lg:order-1">
@@ -641,8 +643,9 @@
     </section>
 
     <!-- WHOLESALE RFQ & CONTACT SECTION -->
-    <section id="contact" class="py-20 md:py-32 bg-[#0B132B] text-white relative overflow-hidden bg-grid-pattern">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+    <section id="contact" class="py-20 md:py-32 bg-[#0B132B] text-white relative overflow-hidden">
+        <div class="absolute inset-0 grid-dots-light pointer-events-none opacity-25"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
             <!-- Left Info Column -->
             <div class="lg:col-span-5 space-y-8 text-center lg:text-left">
                 <div>
@@ -937,32 +940,13 @@
     <script>
         lucide.createIcons();
         
-        // Dynamic Navbar Scroll Effect
+        // Sticky Header Scroll Elevation
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
-            const navLinks = document.querySelectorAll('.nav-link');
-            const mobileToggle = document.querySelector('.mobile-toggle');
-            
-            if (window.scrollY > 40) {
-                nav.classList.add('nav-scrolled');
-                navLinks.forEach(link => {
-                    link.classList.remove('text-white/90');
-                    link.classList.add('text-slate-700');
-                });
-                if (mobileToggle) {
-                    mobileToggle.classList.remove('text-white', 'bg-white/10');
-                    mobileToggle.classList.add('text-slate-800', 'bg-slate-100');
-                }
+            if (window.scrollY > 20) {
+                nav.classList.add('scrolled');
             } else {
-                nav.classList.remove('nav-scrolled');
-                navLinks.forEach(link => {
-                    link.classList.remove('text-slate-700');
-                    link.classList.add('text-white/90');
-                });
-                if (mobileToggle) {
-                    mobileToggle.classList.remove('text-slate-800', 'bg-slate-100');
-                    mobileToggle.classList.add('text-white', 'bg-white/10');
-                }
+                nav.classList.remove('scrolled');
             }
         });
 
