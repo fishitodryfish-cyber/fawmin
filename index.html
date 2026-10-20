@@ -27,12 +27,16 @@
         .brand-bg { background-color: #10193F; }
         .brand-text { color: #10193F; }
         .nav-scrolled { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); padding-top: 0.75rem; padding-bottom: 0.75rem; }
-        .product-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
-        .product-card:hover { transform: translateY(-10px); }
         .hero-gradient { background: linear-gradient(135deg, #10193F 0%, #1e2e74 100%); }
         
-        .img-container img { transition: transform 0.6s ease; }
-        .product-card:hover .img-container img { transform: scale(1.1); }
+        /* Modern Product Card & Pouch Display */
+        .product-card { transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
+        .product-card:hover { transform: translateY(-8px); }
+        .pouch-img { transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease; }
+        .product-card:hover .pouch-img { transform: scale(1.08) translateY(-4px); }
+        
+        /* Interactive Filter Tabs */
+        .filter-btn.active { background-color: #10193F !important; color: #ffffff !important; border-color: #10193F !important; box-shadow: 0 10px 20px -5px rgba(16,25,63,0.3); }
 
         #product-modal { transition: opacity 0.3s ease; }
         .modal-content { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
@@ -201,51 +205,143 @@
     </section>
 
     <!-- PRODUCT CATALOG -->
-    <section id="products" class="py-16 md:py-32 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center mb-16 md:mb-24">
-            <h2 class="text-blue-600 font-black uppercase tracking-[0.2em] md:tracking-[0.3em] text-[10px] md:text-sm mb-2 md:mb-4">Export Catalog</h2>
-            <h3 class="text-3xl md:text-6xl font-black brand-text mb-4 md:mb-6 uppercase italic">Our Varieties</h3>
-            <p class="text-gray-500 max-w-xl mx-auto text-sm md:text-lg font-medium">Click on any product to see ingredients and nutritional details.</p>
+    <section id="products" class="py-20 md:py-28 bg-gradient-to-b from-white via-slate-50/60 to-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest bg-blue-50 text-blue-700 border border-blue-200/60 mb-4 shadow-sm">
+                    <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+                    Export Catalog • 100% Sun-Dried
+                </div>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black brand-text tracking-tight uppercase italic mb-4">
+                    Our Premium Varieties
+                </h2>
+                <p class="text-gray-600 text-sm md:text-base leading-relaxed font-medium">
+                    Sourced from pristine Sri Lankan coastal waters and processed under strict FDA & HACCP certified hygienic protocols. Click any variety to inspect detailed export specifications and nutritional profile.
+                </p>
+                
+                <!-- Trust Highlights Badges -->
+                <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-6">
+                    <span class="inline-flex items-center gap-1.5 text-xs font-bold text-slate-700 bg-white px-3.5 py-1.5 rounded-full border border-slate-200/80 shadow-xs">
+                        <i data-lucide="sun" class="w-3.5 h-3.5 text-amber-500"></i> 100% Sun-Dried
+                    </span>
+                    <span class="inline-flex items-center gap-1.5 text-xs font-bold text-slate-700 bg-white px-3.5 py-1.5 rounded-full border border-slate-200/80 shadow-xs">
+                        <i data-lucide="shield-check" class="w-3.5 h-3.5 text-blue-600"></i> FDA & HACCP Certified
+                    </span>
+                    <span class="inline-flex items-center gap-1.5 text-xs font-bold text-slate-700 bg-white px-3.5 py-1.5 rounded-full border border-slate-200/80 shadow-xs">
+                        <i data-lucide="leaf" class="w-3.5 h-3.5 text-emerald-600"></i> Zero Artificial Additives
+                    </span>
+                    <span class="inline-flex items-center gap-1.5 text-xs font-bold text-slate-700 bg-white px-3.5 py-1.5 rounded-full border border-slate-200/80 shadow-xs">
+                        <i data-lucide="package" class="w-3.5 h-3.5 text-indigo-600"></i> Vacuum Sealed / Bulk Pack
+                    </span>
+                </div>
+
+                <!-- Category Filter Tabs -->
+                <div class="flex flex-wrap items-center justify-center gap-2 md:gap-3 mt-8" id="category-filters">
+                    <button onclick="filterCategory('All')" class="filter-btn active px-5 py-2 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 border">
+                        All Varieties <span class="ml-1 opacity-80 font-normal">(10)</span>
+                    </button>
+                    <button onclick="filterCategory('Dried Fish')" class="filter-btn px-5 py-2 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 border bg-white text-slate-700 border-slate-200 hover:border-blue-400">
+                        Dried Fish <span class="ml-1 opacity-80 font-normal">(6)</span>
+                    </button>
+                    <button onclick="filterCategory('Shrimp')" class="filter-btn px-5 py-2 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 border bg-white text-slate-700 border-slate-200 hover:border-blue-400">
+                        Shrimp & Prawns <span class="ml-1 opacity-80 font-normal">(2)</span>
+                    </button>
+                    <button onclick="filterCategory('Specialty')" class="filter-btn px-5 py-2 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 border bg-white text-slate-700 border-slate-200 hover:border-blue-400">
+                        Specialty Cuts <span class="ml-1 opacity-80 font-normal">(2)</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8" id="product-list"></div>
         </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10" id="product-list"></div>
     </section>
 
     <!-- MODAL -->
     <div id="product-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
         <div class="absolute inset-0 bg-[#10193F]/80 backdrop-blur-sm" onclick="closeModal()"></div>
-        <div class="modal-content relative bg-white w-full max-w-lg rounded-2xl md:rounded-[2.5rem] shadow-2xl overflow-hidden transform scale-95 opacity-0 flex flex-col max-h-[90vh]">
-            <button onclick="closeModal()" class="absolute top-4 right-4 md:top-6 md:right-6 z-20 bg-gray-100 p-2 rounded-full hover:bg-gray-200">
-                <i data-lucide="x" class="w-5 h-5 md:w-6 md:h-6 brand-text"></i>
+        <div class="modal-content relative bg-white w-full max-w-xl rounded-3xl shadow-2xl overflow-hidden transform scale-95 opacity-0 flex flex-col max-h-[92vh] border border-slate-100">
+            <!-- Close Button -->
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-20 bg-slate-100/90 hover:bg-slate-200 text-slate-700 p-2.5 rounded-full transition-colors shadow-sm">
+                <i data-lucide="x" class="w-5 h-5"></i>
             </button>
-            <div id="modal-image-container" class="h-48 md:h-64 bg-gray-100 relative shrink-0">
-                <img id="modal-img" src="" alt="" class="w-full h-full object-cover">
-                <div class="absolute bottom-0 left-0 w-full p-6 md:p-8 bg-gradient-to-t from-black/60 to-transparent">
-                    <h4 id="modal-title" class="text-xl md:text-3xl font-black text-white uppercase tracking-tighter"></h4>
+
+            <!-- Modal Header / Showcase -->
+            <div class="relative bg-gradient-to-b from-slate-100/80 via-slate-50 to-white p-6 sm:p-8 flex items-center justify-center shrink-0 border-b border-slate-100">
+                <div class="h-56 sm:h-64 max-w-xs w-full flex items-center justify-center">
+                    <img id="modal-img" src="" alt="" class="max-h-full max-w-full object-contain filter drop-shadow-[0_16px_24px_rgba(16,25,63,0.18)]" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="hidden w-40 h-40 rounded-2xl bg-[#10193F] text-white flex-col items-center justify-center p-4 text-center">
+                        <i data-lucide="fish" class="w-10 h-10 text-blue-300 mb-2"></i>
+                        <span class="text-xs font-bold uppercase tracking-wider text-blue-200">Export Grade</span>
+                    </div>
                 </div>
             </div>
-            <div class="p-6 md:p-8 space-y-5 md:space-y-6 overflow-y-auto">
+
+            <!-- Modal Body (Scrollable) -->
+            <div class="p-6 sm:p-8 space-y-6 overflow-y-auto">
                 <div>
-                    <h5 class="text-blue-600 font-black uppercase tracking-widest text-[10px] md:text-xs mb-2 md:mb-3">Main Ingredients</h5>
-                    <p id="modal-ingredients" class="text-gray-700 font-medium text-base md:text-lg italic"></p>
-                </div>
-                <div class="grid grid-cols-2 gap-3 md:gap-4">
-                    <div class="p-3 md:p-4 bg-green-50 rounded-xl md:rounded-2xl border border-green-100 flex items-center gap-2 md:gap-3">
-                        <i data-lucide="leaf" class="text-green-500 w-4 h-4 md:w-5 md:h-5"></i>
-                        <span class="text-[10px] md:text-xs font-bold text-green-700 uppercase">100% Organic</span>
+                    <div class="flex items-center gap-2 mb-2">
+                        <span id="modal-type-badge" class="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-blue-100 text-blue-800"></span>
+                        <span id="modal-size-badge" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-700"></span>
                     </div>
-                    <div class="p-3 md:p-4 bg-blue-50 rounded-xl md:rounded-2xl border border-blue-100 flex items-center gap-2 md:gap-3">
-                        <i data-lucide="shield-check" class="text-blue-500 w-4 h-4 md:w-5 md:h-5"></i>
-                        <span class="text-[10px] md:text-xs font-bold text-blue-700 uppercase">Natural</span>
+                    <h3 id="modal-title" class="text-2xl sm:text-3xl font-black text-[#10193F] tracking-tight"></h3>
+                </div>
+
+                <!-- Export Quality Highlights -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    <div class="p-3 bg-emerald-50/70 rounded-xl border border-emerald-100 flex items-center gap-2.5">
+                        <i data-lucide="sun" class="text-emerald-600 w-4 h-4 shrink-0"></i>
+                        <div>
+                            <div class="text-[10px] font-bold uppercase text-emerald-800">100% Sun-Dried</div>
+                            <div class="text-[10px] text-emerald-600">Naturally cured</div>
+                        </div>
+                    </div>
+                    <div class="p-3 bg-blue-50/70 rounded-xl border border-blue-100 flex items-center gap-2.5">
+                        <i data-lucide="shield-check" class="text-blue-600 w-4 h-4 shrink-0"></i>
+                        <div>
+                            <div class="text-[10px] font-bold uppercase text-blue-800">FDA & HACCP</div>
+                            <div class="text-[10px] text-blue-600">Certified hygiene</div>
+                        </div>
+                    </div>
+                    <div class="p-3 bg-amber-50/70 rounded-xl border border-amber-100 flex items-center gap-2.5 col-span-2 sm:col-span-1">
+                        <i data-lucide="check" class="text-amber-600 w-4 h-4 shrink-0"></i>
+                        <div>
+                            <div class="text-[10px] font-bold uppercase text-amber-800">0% Additives</div>
+                            <div class="text-[10px] text-amber-600">Pure sea salt only</div>
+                        </div>
                     </div>
                 </div>
-                <div class="pt-2 border-t">
-                    <p class="text-gray-400 text-[10px] md:text-xs leading-relaxed uppercase font-bold tracking-wider">
-                        Naturally sun-dried under hygienic conditions. No added preservatives.
-                    </p>
+
+                <!-- Ingredients & Specifications Table -->
+                <div class="bg-slate-50 rounded-2xl p-4 sm:p-5 border border-slate-200/70 space-y-3">
+                    <div class="flex items-start justify-between text-xs sm:text-sm py-1 border-b border-slate-200/60">
+                        <span class="text-slate-500 font-semibold">Ingredients:</span>
+                        <span id="modal-ingredients" class="font-bold text-slate-900 text-right"></span>
+                    </div>
+                    <div class="flex items-center justify-between text-xs sm:text-sm py-1 border-b border-slate-200/60">
+                        <span class="text-slate-500 font-semibold">Origin:</span>
+                        <span class="font-bold text-slate-900">Sri Lanka (Indian Ocean)</span>
+                    </div>
+                    <div class="flex items-center justify-between text-xs sm:text-sm py-1 border-b border-slate-200/60">
+                        <span class="text-slate-500 font-semibold">Packaging Options:</span>
+                        <span class="font-bold text-slate-900">Retail Pouch / Bulk 5kg & 10kg</span>
+                    </div>
+                    <div class="flex items-center justify-between text-xs sm:text-sm py-1">
+                        <span class="text-slate-500 font-semibold">Shelf Life:</span>
+                        <span class="font-bold text-slate-900">12 Months (Sealed)</span>
+                    </div>
                 </div>
-                <button onclick="enquireFromModal()" class="w-full brand-bg text-white font-black py-4 md:py-5 rounded-xl md:rounded-2xl hover:bg-blue-700 transition-all flex items-center justify-center gap-2 md:gap-3 shadow-xl uppercase tracking-widest text-sm">
-                    Enquire for Wholesale <i data-lucide="arrow-right" class="w-4 h-4 md:w-5 md:h-5"></i>
-                </button>
+
+                <!-- Action CTAs -->
+                <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                    <button onclick="enquireFromModal()" class="flex-1 brand-bg hover:bg-blue-700 text-white font-extrabold py-3.5 px-6 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 text-sm uppercase tracking-wider">
+                        Request FOB Quote <i data-lucide="send" class="w-4 h-4"></i>
+                    </button>
+                    <a id="modal-whatsapp-btn" href="https://wa.me/94777204485" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-5 rounded-xl transition-all shadow-md flex items-center justify-center gap-2 text-sm">
+                        <i data-lucide="phone" class="w-4 h-4"></i> WhatsApp
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -392,49 +488,135 @@
         }
 
         const products = [
-            { name: "Anchovy (HL)", size: "150g", type: "Dried Fish", img: "anchovy_hl.png", ing: "Fresh Anchovy, Natural Sea Salt." },
-            { name: "Anchovy (HO)", size: "150g", type: "Dried Fish", img: "anchovy_ho.png", ing: "Whole Fresh Anchovy, Natural Sea Salt." },
-            { name: "Dry Lottia Cut Pcs", size: "150g", type: "Specialty", img: "lottia.png", ing: "Premium Lottia Fish, Natural Sea Salt." },
-            { name: "Large Shrimp", size: "100g", type: "Shrimp", img: "large_shrimp.png", ing: "Wild-Caught Large Shrimp, Sea Salt." },
-            { name: "Dry Baby Shrimp", size: "100g", type: "Shrimp", img: "baby_shrimp.png", ing: "Wild-Caught Baby Shrimp, Sea Salt." },
-            { name: "Queen Fish Bone", size: "200g", type: "Specialty", img: "queenfish_bone.png", ing: "Selected Queen Fish Bone, Sea Salt." },
-            { name: "Chapila", size: "150g", type: "Dried Fish", img: "chapila.png", ing: "Fresh Chapila Fish, Natural Sea Salt." },
-            { name: "Dry Suri Cut Pcs", size: "150g", type: "Dried Fish", img: "suri.png", ing: "Fresh Suri Fish Pieces, Sea Salt." },
-            { name: "Kiski", size: "100g", type: "Dried Fish", img: "kiski.png", ing: "Fresh Kiski Fish, Natural Sea Salt." },
-            { name: "Mackerel", size: "100g", type: "Dried Fish", img: "mackerel.png", ing: "Fresh Atlantic Mackerel, Sea Salt." }
+            { id: 1, name: "Anchovy (HL)", size: "150g", type: "Dried Fish", img: "anchovy_hl.png", ing: "Fresh Headless Anchovy, Natural Sea Salt." },
+            { id: 2, name: "Anchovy (HO)", size: "150g", type: "Dried Fish", img: "anchovy_ho.png", ing: "Whole Fresh Anchovy, Natural Sea Salt." },
+            { id: 3, name: "Dry Lottia Cut Pcs", size: "150g", type: "Specialty", img: "lottia.png", ing: "Premium Lottia Fish, Natural Sea Salt." },
+            { id: 4, name: "Large Shrimp", size: "100g", type: "Shrimp", img: "large_shrimp.png", ing: "Wild-Caught Large Shrimp, Sea Salt." },
+            { id: 5, name: "Dry Baby Shrimp", size: "100g", type: "Shrimp", img: "baby_shrimp.png", ing: "Wild-Caught Baby Shrimp, Sea Salt." },
+            { id: 6, name: "Queen Fish Bone", size: "200g", type: "Specialty", img: "queenfish_bone.png", ing: "Selected Queen Fish Bone, Sea Salt." },
+            { id: 7, name: "Chapila", size: "150g", type: "Dried Fish", img: "chapila.png", ing: "Fresh Chapila Fish, Natural Sea Salt." },
+            { id: 8, name: "Dry Suri Cut Pcs", size: "150g", type: "Dried Fish", img: "suri.png", ing: "Fresh Suri Fish Pieces, Sea Salt." },
+            { id: 9, name: "Kiski", size: "100g", type: "Dried Fish", img: "kiski.png", ing: "Fresh Kiski Fish, Natural Sea Salt." },
+            { id: 10, name: "Mackerel", size: "100g", type: "Dried Fish", img: "mackerel.png", ing: "Fresh Atlantic Mackerel, Sea Salt." }
         ];
 
+        let currentCategory = 'All';
         let currentProduct = null;
-        const list = document.getElementById('product-list');
-        
-        products.forEach(p => {
-            const card = document.createElement('div');
-            card.className = "product-card bg-white p-6 md:p-8 rounded-2xl md:rounded-[3rem] border border-gray-100 shadow-sm flex flex-col";
-            card.onclick = () => openModal(p);
-            card.innerHTML = `
-                <div class="img-container h-48 md:h-56 bg-gray-100 rounded-xl md:rounded-[2rem] overflow-hidden mb-6 md:mb-8 relative text-center">
-                    <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="hidden absolute inset-0 items-center justify-center bg-blue-50">
-                        <i data-lucide="package" class="w-12 h-12 md:w-16 md:h-16 text-blue-100"></i>
+
+        function renderProducts(category = 'All') {
+            const list = document.getElementById('product-list');
+            if (!list) return;
+            list.innerHTML = '';
+            
+            const filtered = category === 'All' ? products : products.filter(p => p.type === category);
+            
+            filtered.forEach(p => {
+                const card = document.createElement('div');
+                card.className = "product-card group relative bg-white rounded-3xl p-5 md:p-6 border border-slate-200/80 shadow-sm hover:shadow-2xl hover:border-blue-300 transition-all duration-300 flex flex-col justify-between cursor-pointer";
+                card.onclick = () => openModal(p);
+
+                let badgeStyle = "bg-blue-50 text-blue-700 border-blue-100";
+                let dotStyle = "bg-blue-500";
+                if (p.type === 'Shrimp') {
+                    badgeStyle = "bg-amber-50 text-amber-700 border-amber-100";
+                    dotStyle = "bg-amber-500";
+                } else if (p.type === 'Specialty') {
+                    badgeStyle = "bg-purple-50 text-purple-700 border-purple-100";
+                    dotStyle = "bg-purple-500";
+                }
+
+                card.innerHTML = `
+                    <div>
+                        <!-- Header Pill Tags -->
+                        <div class="flex items-center justify-between gap-2 mb-3">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black tracking-wider uppercase border ${badgeStyle}">
+                                <span class="w-1.5 h-1.5 rounded-full ${dotStyle}"></span>
+                                ${p.type}
+                            </span>
+                            <span class="text-[11px] font-bold text-slate-600 bg-slate-100 px-2.5 py-0.5 rounded-full border border-slate-200/60">
+                                ${p.size}
+                            </span>
+                        </div>
+
+                        <!-- Pouch Showcase Container -->
+                        <div class="relative w-full aspect-square rounded-2xl bg-gradient-to-b from-slate-50 via-slate-100/40 to-blue-50/20 p-4 sm:p-5 flex items-center justify-center overflow-hidden mb-4 border border-slate-100/90 group-hover:bg-blue-50/30 transition-colors">
+                            <img src="${p.img}" alt="${p.name}" class="pouch-img w-full h-full object-contain filter drop-shadow-[0_12px_18px_rgba(16,25,63,0.14)]" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="hidden absolute inset-0 flex-col items-center justify-center p-5 text-center bg-gradient-to-br from-[#10193F] to-slate-900 text-white rounded-2xl">
+                                <div class="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center mb-2.5">
+                                    <i data-lucide="fish" class="w-6 h-6 text-blue-300"></i>
+                                </div>
+                                <span class="text-xs font-black tracking-widest uppercase text-blue-200 mb-0.5">${p.name}</span>
+                                <span class="text-[10px] text-slate-300 font-medium">Export Grade Standard</span>
+                                <span class="mt-3 text-[9px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-200 border border-blue-400/30">Bulk / Custom Order</span>
+                            </div>
+                        </div>
+
+                        <!-- Product Info -->
+                        <h4 class="text-lg md:text-xl font-extrabold text-[#10193F] group-hover:text-blue-600 transition-colors tracking-tight mb-1.5 line-clamp-1">${p.name}</h4>
+                        <p class="text-xs text-slate-500 font-medium mb-3 line-clamp-1 flex items-center gap-1.5">
+                            <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i>
+                            ${p.ing}
+                        </p>
+
+                        <!-- Micro Feature Badges -->
+                        <div class="flex flex-wrap items-center gap-1.5">
+                            <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-100">100% Sun-Dried</span>
+                            <span class="text-[10px] font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-100">Zero Additives</span>
+                        </div>
                     </div>
-                </div>
-                <div class="text-[10px] font-black text-blue-500 uppercase tracking-[0.2em] mb-2 md:mb-3">${p.type}</div>
-                <h4 class="text-xl md:text-2xl font-bold brand-text mb-1 md:mb-2 uppercase tracking-tighter">${p.name}</h4>
-                <p class="text-xs md:text-sm text-gray-400 font-bold mb-6 md:mb-8 italic">Net Weight: ${p.size}</p>
-                <div class="mt-auto flex items-center gap-2 text-[10px] md:text-xs font-bold brand-text group-hover:text-blue-500 transition-colors uppercase tracking-widest">
-                    View Details <i data-lucide="info" class="w-4 h-4"></i>
-                </div>
-            `;
-            list.appendChild(card);
-        });
+
+                    <!-- Footer Action -->
+                    <div class="mt-5 pt-3.5 border-t border-slate-100 flex items-center justify-between">
+                        <span class="text-xs font-bold text-[#10193F] group-hover:text-blue-600 transition-colors flex items-center gap-1">
+                            Specs & Details <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-blue-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+                        </span>
+                        <span class="text-[11px] font-extrabold tracking-wider uppercase text-blue-600 bg-blue-50 group-hover:bg-blue-600 group-hover:text-white px-3 py-1 rounded-full transition-all shadow-xs">
+                            Enquire
+                        </span>
+                    </div>
+                `;
+                list.appendChild(card);
+            });
+
+            lucide.createIcons();
+        }
+
+        function filterCategory(cat) {
+            currentCategory = cat;
+            const buttons = document.querySelectorAll('#category-filters .filter-btn');
+            buttons.forEach(btn => {
+                if (btn.innerText.startsWith(cat) || (cat === 'All' && btn.innerText.startsWith('All'))) {
+                    btn.className = "filter-btn active px-5 py-2 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 border";
+                } else {
+                    btn.className = "filter-btn px-5 py-2 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 border bg-white text-slate-700 border-slate-200 hover:border-blue-400";
+                }
+            });
+            renderProducts(cat);
+        }
 
         function openModal(p) {
             currentProduct = p;
             const modal = document.getElementById('product-modal');
             const content = modal.querySelector('.modal-content');
-            document.getElementById('modal-img').src = p.img;
+            
+            const modalImg = document.getElementById('modal-img');
+            modalImg.src = p.img;
+            modalImg.style.display = 'block';
+            if (modalImg.nextElementSibling) {
+                modalImg.nextElementSibling.style.display = 'none';
+            }
+
             document.getElementById('modal-title').innerText = p.name;
+            document.getElementById('modal-type-badge').innerText = p.type;
+            document.getElementById('modal-size-badge').innerText = 'Retail Pack: ' + p.size;
             document.getElementById('modal-ingredients').innerText = p.ing;
+            
+            const waBtn = document.getElementById('modal-whatsapp-btn');
+            if (waBtn) {
+                const text = encodeURIComponent("Hello Fishito, I am interested in an export quotation for " + p.name + " (" + p.size + "). Please share FOB pricing and shipping specs.");
+                waBtn.href = "https://wa.me/94777204485?text=" + text;
+            }
+
             modal.style.display = 'flex';
             setTimeout(() => { modal.classList.add('opacity-100'); content.classList.remove('scale-95', 'opacity-0'); }, 10);
             document.body.style.overflow = 'hidden';
@@ -453,11 +635,13 @@
             if (!currentProduct) return;
             closeModal();
             setTimeout(() => {
-                document.getElementById('enquiry-text').value = `I'm interested in wholesale import of ${currentProduct.name}. Please provide export pricing.`;
+                document.getElementById('enquiry-text').value = "I'm interested in wholesale import of " + currentProduct.name + " (" + currentProduct.size + "). Please provide FOB export pricing and packaging specs.";
                 document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
             }, 350);
         }
         
+        // Initial render
+        renderProducts('All');
         lucide.createIcons();
     </script>
 </body>
